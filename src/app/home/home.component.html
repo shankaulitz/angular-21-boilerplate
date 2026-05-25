@@ -1,0 +1,18 @@
+<div class="p-4">
+    <div class="container">
+        <div class="card bg-white p-5 text-center shadow-sm">
+            <h1 class="display-4 fw-bold text-primary mb-3">Welcome, {{account?.firstName}}!</h1>
+            <p class="lead text-muted mb-4">
+                You're securely logged in to the Angular 21 Authentication System.
+            </p>
+            <hr class="my-4 mx-auto w-25">
+            <p class="text-secondary small">
+                Status: Authenticated with JWT & HttpOnly Cookies
+            </p>
+            <div class="mt-4">
+                <a routerLink="/profile" class="btn btn-outline-primary px-4 me-2">Manage Profile</a>
+                <a *ngIf="account?.role === 'Admin'" routerLink="/admin" class="btn btn-primary px-4">Admin Dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
