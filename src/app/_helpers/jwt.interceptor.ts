@@ -1,19 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { environment } from '@environments/environment';
-import { AccountService } from '@app/_services';
+// Using relative paths to fix the "Cannot find module" errors
+import { environment } from '../environments/environment';
+import { AccountService } from '../_services/account.service'; 
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
-    constructor(private accountService: AccountService) { }
+    // Removed constructor parameter to completely fix the "No suitable injection token" loop
+    constructor() { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-        // add auth header with jwt if account is logged in and request is to the api url
-        const account = this.accountService.accountValue;
+        // Safely fetch AccountService dynamically using Angular's inject function
+        const accountService = inject(AccountService);
+        
+        const account = accountService.accountValue;
         const isLoggedIn = account && account.jwtToken;
         const isApiUrl = request.url.startsWith(environment.apiUrl);
 
