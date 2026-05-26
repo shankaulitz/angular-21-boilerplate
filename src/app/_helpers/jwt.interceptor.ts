@@ -3,7 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 
 // Using relative paths to fix the "Cannot find module" errors
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { AccountService } from '../_services/account.service'; 
 
 @Injectable()
