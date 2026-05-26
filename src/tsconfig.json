@@ -9,7 +9,7 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "ignoreDeprecations": "6.0",
     "importHelpers": true,
     "target": "ES2022",
