@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Alert, AlertType } from '@app/_models';
-import { AlertService } from '@app/_services';
+import { Alert, AlertType } from '../_models';
+import { AlertService } from '../_services';
 @Component({
     selector: 'alert',
-    templateUrl: './alert.component.ts', // or alert.component.html depending on your boilerplate layout
+    templateUrl: './alert.component.html', // or alert.component.html depending on your boilerplate layout
     standalone: false
 })
 export class AlertComponent implements OnInit, OnDestroy {
@@ -26,7 +26,7 @@ export class AlertComponent implements OnInit, OnDestroy {
 
         // subscribe to new alert notifications
         this.alertSubscription = this.alertService.onAlert(this.id)
-            .subscribe(alert => {
+            .subscribe((alert: Alert) => {
 
                 // clear alerts when an empty alert is received
                 if (!alert.message) {
